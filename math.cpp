@@ -32,7 +32,5 @@ int main(){
 }
 
 /*
-ax=1 mod m
-ax+bm=1
 
 */
