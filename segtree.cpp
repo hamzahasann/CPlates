@@ -20,17 +20,13 @@ struct segTree{
     }T merge(T a,T b){
         T res;
         // merge here
+        res=a+b;
         return res;
     }
 };
 int main(){
-    segTree<int>t(25,0);
-    for(int i=1;i<=25;i++){
-        t.update(i,10*i);
-        // cout<<i<<endl;
-    }cout<<t.query(1,25)<<endl;
-    // t.update(1,1);
-    // for(int i=0;i<t.t.size();i++){
-    //     cout<<i<<" "<<t.t[i]<<endl;
-    // }
+    segTree<int>t(3e5+5,0);
+    t.update(2,2);
+    t.update(3,3);
+    cout<<t.query(2,3);
 }
