@@ -18,6 +18,22 @@ long long inv(long long a,long long n){
     if(a==1)return 1;
     return (1-inv(n%a,a)*n)/a+n;
 }
+int gcd(int u, int v) { // faster
+    int shift;
+    if (u == 0) return v;
+    if (v == 0) return u;
+    shift = __builtin_ctz(u | v);
+    u >>= __builtin_ctz(u);
+    do{
+        int m;
+        v >>= __builtin_ctz(v);
+        v -= u;
+        m = v >> 31;
+        u += v & m;
+        v = (v + m) ^ m;
+    } while (v != 0);
+    return u << shift;
+}
 long long findInv(long long x,long long m){
     long long c1,c2;
     gcdEx(x,m,c1,c2);

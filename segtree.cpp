@@ -20,7 +20,6 @@ struct segTree{
     }T merge(T a,T b){
         T res;
         // merge here
-        res=a+b;
         return res;
     }
 };
