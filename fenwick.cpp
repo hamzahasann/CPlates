@@ -1,30 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int N=1000;
-vector<int>bit(N+1);
-void update(int i,int k){
-    while(i<=N){
-        bit[i]+=k;
-        i+=i&-i;
+template<class T>
+struct BIT{
+    int n;vector<T>t;
+    BIT(int _n){
+        n=_n;t.resize(n);
+    }void update(int i,T k){
+        while(i<n){
+            t[i]+=k;
+            i+=i&-i;
+        }
+    }T pref(int i){
+        int res=0;
+        while(i>0){
+            res+=t[i];
+            i-=i&-i;
+        }return res;
+    }T query(int l,int r){
+        return pref(r)-pref(l-1);
     }
-}
-int pref(int i){
-    int res=0;
-    while(i>0){
-        res+=bit[i];
-        i-=i&-i;
-    }return res;
-}
-int query(int l,int r){
-    return pref(r)-pref(l-1);
-}
-vector<int>a(N+1);
-int brute(int l,int r){
-    int res=0;
-    for(int i=l;i<=r;i++)res+=a[i];
-    return res;
-}
+};
 int main(){
     // freopen("out.txt","r",stdin);//freopen("out.txt","w",stdout);
     // int n;cin>>n;
@@ -38,4 +34,11 @@ int main(){
     //         cout<<"NOT MATCH\n";
     //     }
     // }
+    // BIT<int> b(10+1);
+    // b.update(1,1);
+    // b.update(2,3);
+    // b.update(7,2);
+    // cout<<b.query(1,10);
+    // cout<<b.query(1,6);
+    // cout<<b.query(2,6);
 }
