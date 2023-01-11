@@ -48,13 +48,5 @@ int hopcroft_karp(vector<vector<int>>&adj1,int n1,int n2){
     }return cnt;
 }
 int main(){
-    int n1=3,n2=3;
-    vector<vector<int>>adj(4);
-    adj[1].push_back(2);
-    adj[2].push_back(3);
-    adj[3].push_back(3);
-    adj[2].push_back(1);
-    adj[2].push_back(2);
-
     cout<<hopcroft_karp(adj,n1,n2)<<endl;
 }

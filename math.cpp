@@ -1,18 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-long long gcdEx(long long a,long long b,long long &x,long long &y){
-    int f=0;
-    if(a>b){swap(a,b);f=1;}
-    if(a==0){
-        x=0;y=1;
-        return b;
-    }long long x1,y1;
-    long long g=gcdEx(b%a,a,x1,y1);
-    x=y1-b/a*x1;
-    y=x1;
-    if(f)swap(x,y);
-    return g;
+// long long gcdEx(long long a,long long b,long long &x,long long &y){
+//     int f=0;
+//     if(a>b){swap(a,b);f=1;}
+//     if(a==0){
+//         x=0;y=1;
+//         return b;
+//     }long long x1,y1;
+//     long long g=gcdEx(b%a,a,x1,y1);
+//     x=y1-b/a*x1;
+//     y=x1;
+//     if(f)swap(x,y);
+//     return g;
+// }
+
+long long gcdEx(long long a, long long b, long long &x, long long &y){
+    if(!b)return x=1,y=0,a;
+    long long d=gcdEx(b,a%b,y,x);
+    return y-=a/b*x,d;
+}
+long long crt(long long a,long long m,long long b,long long n){
+    if(n>m)swap(a,b),swap(m,n);
+    long long x,y,g=gcdEx(m,n,x,y);
+    assert((a-b)%g==0);
+    x=(b-a)%n*x%n/g*m+a;
+    return x<0 ? x+m*n/g:x;
 }
 long long inv(long long a,long long n){
     if(a==1)return 1;
