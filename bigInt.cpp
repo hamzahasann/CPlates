@@ -23,5 +23,5 @@ struct int128{
 int main(){
     int128 a(0,1LL<<61),b=a;
     a=a+b;
-    cout<<a.H<<" "<<a.L<<endl;
+    
 }

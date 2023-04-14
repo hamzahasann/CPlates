@@ -24,8 +24,6 @@ struct segTree{
     }
 };
 int main(){
-    segTree<int>t(3e5+5,0);
-    t.update(2,2);
-    t.update(3,3);
-    cout<<t.query(2,3);
+    segTree<int>a(4,0);
+    a.update(4,1);
 }

@@ -54,6 +54,20 @@ long long findInv(long long x,long long m){
         c1+=((-c1+m-1)/m)*m;
     }return c1%m;
 }
+ll f[N],fi[N],inv[N];
+void pre(){
+    f[0]=fi[0]=f[1]=fi[1]=1;
+    inv[0]=inv[1]=1;
+    for(int i=2;i<N;i++){
+        f[i]=f[i-1]*i%mod;
+        inv[i]=inv[mod%i]*(mod-mod/i)%mod;
+        fi[i]=fi[i-1]*inv[i]%mod;
+    }
+}
+
+ll c(int n,int r){
+    return f[n]*fi[n-r]%mod*fi[r]%mod;
+}
 int main(){
     long long x=2,m=1e9+7;
     cout<<findInv(x,m)<<endl;
